@@ -1,0 +1,25 @@
+option go_package = "example/proto";
+
+service Trading {
+    rpc ListItems(ListItemsRequest) returns (stream Goods) {}
+    rpc Buy(BuyRequest) returns (BuyResponse) {}
+}
+
+message ListItemsRequest {
+}
+
+message Goods {
+    required uint32 id = 1;
+    required string name = 2;
+    required uint32 price = 3;
+    required uint32 available = 4;
+}
+
+message BuyRequest {
+    required uint32 id = 1;
+    required uint32 qty = 2;
+}
+
+message BuyResponse {
+    required bool success = 1;
+}
